@@ -1,0 +1,30 @@
+.navbar {
+  width: 100%;
+  height: 80px;
+  background-color: rgb(28, 28, 28);
+  display: flex;
+  justify-content: center;
+}
+
+.errorPage {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(28, 28, 28);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.links a {
+  margin-left: 20px;
+}
