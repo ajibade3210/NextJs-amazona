@@ -66,3 +66,10 @@ So in next it easier to add thing to the head of an application
 ## Creating Light and Dark Mode
 
 - First create a Store (using context api)
+- Create Initial State
+- create a reducer function
+- create a StoreProvider Function using a useReducer and call its initial state and reducer function
+- In the \_app the application entry point store your component in a StoreProvider
+- in the Layout file use a useContext to call the state and dispatch function
+- and a condition to switch the theme colors
+- save the store state as cookies using `js-cookie` to make the state persistance
