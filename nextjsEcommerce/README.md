@@ -62,3 +62,7 @@ Here you create a folder with route name and an index file to direct to the fold
 
 The is no Html page in the public folder....
 So in next it easier to add thing to the head of an application
+
+## Creating Light and Dark Mode
+
+- First create a Store (using context api)
