@@ -63,6 +63,8 @@ Here you create a folder with route name and an index file to direct to the fold
 The is no Html page in the public folder....
 So in next it easier to add thing to the head of an application
 
+## Add MaterialUI Theme
+
 ## Creating Light and Dark Mode
 
 - First create a Store (using context api)
@@ -73,3 +75,11 @@ So in next it easier to add thing to the head of an application
 - in the Layout file use a useContext to call the state and dispatch function
 - and a condition to switch the theme colors
 - save the store state as cookies using `js-cookie` to make the state persistance
+
+## Connect Next to MongoDB
+
+- Create DB file in utils folder -- DB.js
+- connect to MongoDB using mongoose ORM
+- .env to hid important connection details information
+- Create Model Schema
+- create a new api/product route using next-connect dependency
