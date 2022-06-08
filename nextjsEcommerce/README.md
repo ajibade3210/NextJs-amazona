@@ -83,3 +83,32 @@ So in next it easier to add thing to the head of an application
 - .env to hid important connection details information
 - Create Model Schema
 - create a new api/product route using next-connect dependency
+- save local data in mongodb (seed.js)
+
+## Fetching DB in NextJs App
+
+- using inbuilt getServerSideProps to fetch data from server side t client.
+- And mongoose Lean to convert mongodb document into plain javascript
+
+```
+export async function getServerSideProps() {
+  await db.connect();
+  const products = await Product.find({}).lean();
+  await db.disconnect();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+```
+
+using the getServerSideProps define below in the home file we can fetch data from the db. But we have to prepend the recieve data with mongoose `lean()` method. Mongoose queries return an instance of mongoose Document class. Which are much heavier than regular js object. `lean` object option tells mongoose to skip instantiating a full mongoose document and give you the POJO
+
+
+-Next we might get this error:
+```
+error - Error: Error serializing `.products[0]._id` returned from `getServerSideProps`
+in "/".
+```
+- To solve this
