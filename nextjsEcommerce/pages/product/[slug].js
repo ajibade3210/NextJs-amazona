@@ -1,7 +1,8 @@
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import React from "react";
 import Layout from "../../components/Layout";
-import data from "../../utils/data";
+// import data from "../../utils/data";  //switching to monogodb
+import db from "../../utils/db";
 import NextLink from "next/link";
 import {
   Button,
@@ -14,12 +15,15 @@ import {
 } from "@material-ui/core";
 import useStyles from "../../utils/styles";
 import Image from "next/image";
+import Product from "../../models/Product";
 
-function ProductScreen() {
+function ProductScreen(props) {
+  const { product } = props;
+
   const classes = useStyles();
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = data.products.find((a) => a.slug === slug);
+  //switching to DB
+  // const { slug } = router.query;
+  // const product = data.products.find((a) => a.slug === slug);
 
   if (!product) {
     return <div>Product Not Found</div>;
@@ -108,3 +112,17 @@ export default ProductScreen;
  * Creating Params in Next
  * insert the param name in a square bracket and file name
  */
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: db.convertDocToObj(product),
+    },
+  };
+}
