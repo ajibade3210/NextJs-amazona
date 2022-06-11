@@ -20,7 +20,6 @@ import useStyles from "../utils/styles";
 const Layout = ({ title, children, description }) => {
   const { state, dispatch } = useContext(Store);
   const { darkMode, cart } = state;
-  console.log(cart.cartItems.length);
   const theme = createTheme({
     typography: {
       h1: {

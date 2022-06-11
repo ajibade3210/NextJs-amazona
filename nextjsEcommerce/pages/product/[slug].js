@@ -34,7 +34,6 @@ function ProductScreen(props) {
 
   //Add to cart functionality
   const addToCartHandler = async () => {
-    console.log("lkjhg");
     //fetch data from db
     const { data } = await axios.get(`/api/products/${product._id}`);
 
